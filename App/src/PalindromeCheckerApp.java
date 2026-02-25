@@ -2,11 +2,6 @@
  * MAIN CLASS - PalindromeCheckerApp
  * Use Case 4: Character Array Based Validation
  *
- * Description:
- * This class validates a palindrome by converting
- * the string into a character array and comparing
- * characters using the two-pointer technique.
- *
  * @author Devansh
  * @version 4.0
  */
@@ -28,7 +23,7 @@ public class PalindromeCheckerApp {
         int start = 0;
         int end = chars.length - 1;
 
-        // Assume it is palindrome initially
+        // Assume palindrome initially
         boolean isPalindrome = true;
 
         // Compare characters using two-pointer technique
