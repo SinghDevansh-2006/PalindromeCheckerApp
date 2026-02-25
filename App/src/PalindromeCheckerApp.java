@@ -1,28 +1,49 @@
+/**
+ * MAIN CLASS - PalindromeCheckerApp
+ *
+ * Use Case 5: Stack Based Palindrome Checker
+ *
+ * Description:
+ * This class validates a palindrome using a Stack
+ * data structure which follows the LIFO principle.
+ *
+ * @author Devansh
+ * @version 5.0
+ */
+
+import java.util.Stack;
+
 public class PalindromeCheckerApp {
 
+    /**
+     * Application entry point for UC5.
+     */
     public static void main(String[] args) {
 
-        // UC1 - Welcome Message
-        System.out.println("=================================");
-        System.out.println("Welcome to Palindrome Checker App");
-        System.out.println("Version: 1.0");
-        System.out.println("=================================");
+        // Declare and initialize input string
+        String input = "noon";
 
-        // UC3 - Palindrome Check Using String Reverse
+        // Create a Stack to store characters
+        Stack<Character> stack = new Stack<>();
 
-        String original = "madam";
-        String reversed = "";
-
-        // Reverse using for loop
-        for (int i = original.length() - 1; i >= 0; i--) {
-            reversed = reversed + original.charAt(i);
+        // Push each character into the stack
+        for (char c : input.toCharArray()) {
+            stack.push(c);
         }
 
-        // Compare original and reversed
-        if (original.equals(reversed)) {
-            System.out.println(original + " is a Palindrome.");
-        } else {
-            System.out.println(original + " is NOT a Palindrome.");
+        // Assume palindrome initially
+        boolean isPalindrome = true;
+
+        // Compare original string with popped characters
+        for (char c : input.toCharArray()) {
+            if (c != stack.pop()) {
+                isPalindrome = false;
+                break;
+            }
         }
+
+        // Display result
+        System.out.println("Input : " + input);
+        System.out.println("Is Palindrome? : " + isPalindrome);
     }
 }
