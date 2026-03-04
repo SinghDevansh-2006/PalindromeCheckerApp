@@ -1,10 +1,11 @@
-/**
- * MAIN CLASS - PalindromeCheckerApp
- * Use Case 4: Character Array Based Validation
- *
- * @author Devansh
- * @version 4.0
- */
+
+
+import java.util.Queue;
+import java.util.LinkedList;
+import java.util.Stack;
+
+
+
 
 public class PalindromeCheckerApp {
         // Declare and initialize input string
@@ -20,22 +21,25 @@ public class PalindromeCheckerApp {
         // Assume palindrome initially
         boolean isPalindrome = true;
 
-        // Compare characters using two-pointer technique
-        while (start < end) {
-            if (chars[start] != chars[end]) {
+
+    public static void main(String[] args) {
+
+        // Define the input string to validate
+        String input = "civic";
+        for (char c : input.toCharArray()) {
+            queue.add(c);     // Enqueue
+            stack.push(c);    // Push
+        }
+
+        // Flag to track palindrome status
+        boolean isPalindrome = true;
+
+        // Compare dequeue (FIFO) vs pop (LIFO)
+        while (!queue.isEmpty()) {
+            if (queue.remove() != stack.pop()) {
                 isPalindrome = false;
                 break;
             }
-            start++;
-            end--;
-=======
-    public static void main(String[] args) {
-
-        // UC1 - Welcome Message
-        System.out.println("=================================");
-        System.out.println("Welcome to Palindrome Checker App");
-        System.out.println("Version: 1.0");
-        System.out.println("=================================");
 
         // UC2 - Hardcoded Palindrome Check
         String word = "madam";
@@ -49,6 +53,7 @@ public class PalindromeCheckerApp {
             System.out.println(word + " is a Palindrome.");
         } else {
             System.out.println(word + " is NOT a Palindrome.");
+
 
         }
 
