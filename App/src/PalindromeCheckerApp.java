@@ -2,11 +2,14 @@
 import java.util.Scanner;
 import java.util.Stack;
 
+import java.util.Scanner;
+
 public class PalindromeCheckerApp {
 
     public static void main(String[] args) {
 
         Scanner scanner = new Scanner(System.in);
+
 
         System.out.print("Input: ");
         String input = scanner.nextLine();
@@ -22,17 +25,12 @@ public class PalindromeCheckerApp {
     }
 }
 
-/**
- * Strategy Interface
- * Defines contract for all palindrome algorithms.
- */
+
 interface PalindromeStrategy {
     boolean check(String input);
 }
 
-/**
- * Stack-based implementation of palindrome checking.
- */
+
 class StackStrategy implements PalindromeStrategy {
 
     @Override
@@ -48,8 +46,37 @@ class StackStrategy implements PalindromeStrategy {
         // Compare by popping
         for (char c : input.toCharArray()) {
             if (c != stack.pop()) {
+
+
+        System.out.print("Input: ");
+        String input = scanner.nextLine();
+
+        PalindromeService service = new PalindromeService();
+
+        boolean result = service.checkPalindrome(input);
+
+        System.out.println("Is Palindrome? : " + result);
+
+        scanner.close();
+    }
+}
+
+class PalindromeService {
+
+    public boolean checkPalindrome(String input) {
+
+        int start = 0;
+        int end = input.length() - 1;
+
+        while (start < end) {
+
+            if (input.charAt(start) != input.charAt(end)) {
+ main
                 return false;
             }
+
+            start++;
+            end--;
         }
 
         return true;
