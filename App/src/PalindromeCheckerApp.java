@@ -1,29 +1,57 @@
 
+import java.util.Scanner;
+import java.util.Stack;
 
 public class PalindromeCheckerApp {
 
     public static void main(String[] args) {
 
-        String input = "A man a plan a canal Panama";
+        Scanner scanner = new Scanner(System.in);
 
+        System.out.print("Input: ");
+        String input = scanner.nextLine();
 
-        String normalized = input.replaceAll("[^a-zA-Z0-9]", "").toLowerCase();
+        // Injecting strategy at runtime
+        PalindromeStrategy strategy = new StackStrategy();
 
-        boolean isPalindrome = true;
+        boolean result = strategy.check(input);
 
+        System.out.println("Is Palindrome? : " + result);
 
-        for (int i = 0; i < normalized.length() / 2; i++) {
+        scanner.close();
+    }
+}
 
+/**
+ * Strategy Interface
+ * Defines contract for all palindrome algorithms.
+ */
+interface PalindromeStrategy {
+    boolean check(String input);
+}
 
-            if (normalized.charAt(i) !=
-                    normalized.charAt(normalized.length() - 1 - i)) {
+/**
+ * Stack-based implementation of palindrome checking.
+ */
+class StackStrategy implements PalindromeStrategy {
 
-                isPalindrome = false;
-                break;
+    @Override
+    public boolean check(String input) {
+
+        Stack<Character> stack = new Stack<>();
+
+        // Push characters onto stack
+        for (char c : input.toCharArray()) {
+            stack.push(c);
+        }
+
+        // Compare by popping
+        for (char c : input.toCharArray()) {
+            if (c != stack.pop()) {
+                return false;
             }
         }
 
-        System.out.println("Input : " + input);
-        System.out.println("Is Palindrome? : " + isPalindrome);
+        return true;
     }
 }
