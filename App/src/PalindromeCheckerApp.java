@@ -1,44 +1,31 @@
-/**
- * MAIN CLASS - PalindromeCheckerApp
- *
- * Use Case 6: Queue + Stack Based Palindrome Check
- *
- * Description:
- * This class demonstrates palindrome validation using
- * two different data structures:
- *
- * - Queue (FIFO - First In First Out)
- * - Stack (LIFO - Last In First Out)
- *
- * Characters are inserted into both structures and then
- * compared by removing from the front of the queue and
- * the top of the stack.
- *
- * @author Devansh
- * @version 6.0
- */
+
 
 import java.util.Queue;
 import java.util.LinkedList;
 import java.util.Stack;
 
-public class PalindromeCheckerApp {
 
-    /**
-     * Application entry point for UC6.
-     */
+
+
+public class PalindromeCheckerApp {
+        // Declare and initialize input string
+        String input = "radar";
+
+        // Convert string to character array
+        char[] chars = input.toCharArray();
+
+        // Initialize two pointers
+        int start = 0;
+        int end = chars.length - 1;
+
+        // Assume palindrome initially
+        boolean isPalindrome = true;
+
+
     public static void main(String[] args) {
 
         // Define the input string to validate
         String input = "civic";
-
-        // Create a Queue (FIFO)
-        Queue<Character> queue = new LinkedList<>();
-
-        // Create a Stack (LIFO)
-        Stack<Character> stack = new Stack<>();
-
-        // Insert characters into both queue and stack
         for (char c : input.toCharArray()) {
             queue.add(c);     // Enqueue
             stack.push(c);    // Push
@@ -53,6 +40,21 @@ public class PalindromeCheckerApp {
                 isPalindrome = false;
                 break;
             }
+
+        // UC2 - Hardcoded Palindrome Check
+        String word = "madam";
+        String reversed = "";
+
+        for (int i = word.length() - 1; i >= 0; i--) {
+            reversed = reversed + word.charAt(i);
+        }
+
+        if (word.equals(reversed)) {
+            System.out.println(word + " is a Palindrome.");
+        } else {
+            System.out.println(word + " is NOT a Palindrome.");
+
+
         }
 
         // Display result
